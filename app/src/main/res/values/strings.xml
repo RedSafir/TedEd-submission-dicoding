@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">My Submission Intermediate</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_list_story">List Story</string>
+    <string name="add_story">Add story</string>
+    <string name="title_home">Home</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_onboarding">In learning you will teach, and in teaching you will learn.</string>
+    <string name="title_email">Email</string>
+    <string name="err_email">Must input Email</string>
+    <string name="title_login">Login</string>
+    <string name="err_password">Length must be more than 8</string>
+    <string name="title_password">Password</string>
+    <string name="title_username">Username</string>
+    <string name="title_sign_up">Sign Up</string>
+    <string name="title_log_out">Log Out</string>
+    <string name="title_change_language">Change Language</string>
+    <string name="err_no_media_selected">No media selected</string>
+    <string name="inf_story_posted">Story already posted</string>
+    <string name="title_upload">upload</string>
+</resources>

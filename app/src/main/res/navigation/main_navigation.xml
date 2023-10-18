@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/navigation_listStory">
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.miftah.mysubmissionintermediate.feature.main.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/navigation_listStory"
+        android:name="com.miftah.mysubmissionintermediate.feature.main.ListStoryFragment"
+        android:label="@string/title_list_story"
+        tools:layout="@layout/fragment_list_story" >
+        <action
+            android:id="@+id/action_navigation_listStory_to_detailStoryFragment"
+            app:destination="@id/detailStoryFragment" />
+        <action
+            android:id="@+id/action_navigation_listStory_to_addStoryActivity"
+            app:destination="@id/addStoryActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailStoryFragment"
+        android:name="com.miftah.mysubmissionintermediate.feature.main.DetailStoryFragment"
+        android:label="fragment_detail_story"
+        tools:layout="@layout/fragment_detail_story" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue='" "' />
+        <argument
+            android:name="photoUrl"
+            app:argType="string"
+            android:defaultValue='" "' />
+        <argument
+            android:name="desc"
+            app:argType="string"
+            android:defaultValue='" "' />
+    </fragment>
+    <activity
+        android:id="@+id/addStoryActivity"
+        android:name="com.miftah.mysubmissionintermediate.feature.add.AddStoryActivity"
+        android:label="activity_add_story"
+        tools:layout="@layout/activity_add_story" >
+        <argument
+            android:name="token"
+            app:argType="string"
+            android:defaultValue='" "' />
+    </activity>
+
+</navigation>
