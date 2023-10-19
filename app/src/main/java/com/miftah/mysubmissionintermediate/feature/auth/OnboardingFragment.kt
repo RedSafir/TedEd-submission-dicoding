@@ -1,5 +1,7 @@
 package com.miftah.mysubmissionintermediate.feature.auth
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +27,8 @@ class OnboardingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        playAnimation()
+
         binding.btnLogin.setOnClickListener {
             it.findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
         }
@@ -37,5 +41,21 @@ class OnboardingFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun playAnimation() {
+        val imageAnim = ObjectAnimator.ofFloat(binding.imageView, View.ALPHA, 1F).setDuration(500)
+        val btnLogin = ObjectAnimator.ofFloat(binding.btnLogin, View.ALPHA, 1F).setDuration(500)
+        val btnSign = ObjectAnimator.ofFloat(binding.btnSignup, View.ALPHA, 1F).setDuration(500)
+        val quote = ObjectAnimator.ofFloat(binding.titleTextView, View.ALPHA, 1F).setDuration(500)
+
+        val btnAct = AnimatorSet().apply {
+            playTogether(btnSign, btnLogin)
+        }
+
+        AnimatorSet().apply {
+            playSequentially(imageAnim, quote, btnAct)
+            start()
+        }
     }
 }

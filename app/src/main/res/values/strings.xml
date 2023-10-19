@@ -12,7 +12,6 @@
     <string name="title_list_story">List Story</string>
     <string name="add_story">Add story</string>
     <string name="title_home">Home</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_onboarding">In learning you will teach, and in teaching you will learn.</string>
     <string name="title_email">Email</string>
@@ -27,4 +26,8 @@
     <string name="err_no_media_selected">No media selected</string>
     <string name="inf_story_posted">Story already posted</string>
     <string name="title_upload">upload</string>
+    <string name="inf_intro">Welcome Back</string>
+    <string name="titile_camera">Camera</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="hint_description">Type description of Story</string>
 </resources>

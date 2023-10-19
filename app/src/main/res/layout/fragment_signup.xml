@@ -7,9 +7,12 @@
     tools:context=".feature.auth.SignupFragment">
 
     <ImageView
+        android:id="@+id/title_img_tedd"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
+        android:alpha="0"
+        tools:alpha="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/title_ted_ed"
@@ -23,6 +26,8 @@
         android:text="@string/title_sign_up"
         android:textStyle="bold"
         android:textSize="24sp"
+        android:alpha="0"
+        tools:alpha="1"
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="@id/guidelineHorizontal2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +39,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:alpha="0"
+        tools:alpha="1"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_username"
+        android:alpha="0"
+        tools:alpha="1"
         android:layout_marginHorizontal="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title_registration"/>
@@ -56,6 +65,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:alpha="0"
+        tools:alpha="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title_username">
@@ -63,7 +74,9 @@
         <com.miftah.mysubmissionintermediate.core.ui.view.CustomEditText
             android:id="@+id/ed_register_name"
             android:layout_width="match_parent"
-            android:layout_height="56dp"/>
+            android:layout_height="56dp"
+            android:alpha="0"
+            tools:alpha="1"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -71,6 +84,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_email"
+        android:alpha="0"
+        tools:alpha="1"
         android:layout_marginHorizontal="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/usernameEditTextLayout"/>
@@ -82,6 +97,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:alpha="0"
+        tools:alpha="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title_email">
@@ -90,6 +107,8 @@
             android:id="@+id/ed_login_email"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:alpha="0"
+            tools:alpha="1"
             android:drawableStart="@drawable/baseline_email_24"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,6 +117,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_password"
+        android:alpha="0"
+        tools:alpha="1"
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="32dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,6 +131,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:alpha="0"
+        tools:alpha="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title_password">
@@ -120,6 +143,8 @@
         android:layout_height="56dp"
         android:layout_gravity="start"
         android:inputType="textPassword"
+        android:alpha="0"
+        tools:alpha="1"
         android:drawableStart="@drawable/baseline_lock_24"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -130,6 +155,9 @@
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:text="@string/title_sign_up"
+        android:enabled="false"
+        android:alpha="0"
+        tools:alpha="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />

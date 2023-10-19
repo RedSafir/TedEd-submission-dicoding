@@ -15,7 +15,7 @@ class DetailStoryFragment : Fragment() {
 
     private var _binding: FragmentDetailStoryBinding? = null
     private val binding get() = _binding!!
-    private val viewModel : MainActivityViewModel by activityViewModels {
+    private val viewModel: MainActivityViewModel by activityViewModels {
         ViewModelFactory.getInstance(requireContext())
     }
 
@@ -39,8 +39,6 @@ class DetailStoryFragment : Fragment() {
             .into(binding.ivDetailPhoto)
         binding.tvDetailDescription.text = description
     }
-
-    
 
     override fun onDestroy() {
         super.onDestroy()

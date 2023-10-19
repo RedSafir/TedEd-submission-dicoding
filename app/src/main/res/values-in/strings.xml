@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Submission Intermediate</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Sandi</string>
+    <string name="action_sign_in">Mendaftarkan</string>
+    <string name="action_sign_in_short">Mendaftar</string>
+    <string name="welcome">"Selamat Datang!"</string>
+    <string name="invalid_username">Username tidak valid</string>
+    <string name="invalid_password">Sandi harus >8 kata</string>
+    <string name="login_failed">"Gagal Masuk"</string>
+    <string name="title_list_story">Barisan Cerita</string>
+    <string name="add_story">Menambahkan Cerita</string>
+    <string name="title_home">Rumah</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_onboarding">Pendidikan adalah senjata utama untuk mengubah dunia.</string>
+    <string name="title_email">Email</string>
+    <string name="err_email">Harus memasukan Email</string>
+    <string name="title_login">Masuk</string>
+    <string name="err_password">Panjangnya harus lebih dari 8</string>
+    <string name="title_password">Sandi</string>
+    <string name="title_username">Nama</string>
+    <string name="title_sign_up">Mendaftar</string>
+    <string name="title_log_out">Keluar</string>
+    <string name="title_change_language">Ganti Bahasa</string>
+    <string name="err_no_media_selected">Tidak ada media yang dipilih</string>
+    <string name="inf_story_posted">Cerita berhasil di pasang</string>
+    <string name="title_upload">Kirim</string>
+    <string name="inf_intro">Selamat Datang</string>
+    <string name="titile_camera">Kamera</string>
+    <string name="title_gallery">Album</string>
+    <string name="hint_description">Tulis Deskripsi untuk cerita</string>
+</resources>

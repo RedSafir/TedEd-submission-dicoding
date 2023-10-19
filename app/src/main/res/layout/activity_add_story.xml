@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Camera"
+        android:text="@string/titile_camera"
         app:layout_constraintEnd_toStartOf="@id/button_to_gallery"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline" />
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Gallery"
+        android:text="@string/title_gallery"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/button_to_camera"
         app:layout_constraintTop_toBottomOf="@id/guideline" />
@@ -44,6 +44,7 @@
         android:layout_marginTop="10dp"
         android:gravity="top"
         android:textSize="16sp"
+        android:hint="@string/hint_description"
         android:inputType="text|textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

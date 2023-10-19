@@ -2,6 +2,7 @@ package com.miftah.mysubmissionintermediate.feature.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -44,5 +45,12 @@ class MainActivity : AppCompatActivity() {
         ).build()
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            findNavController(R.id.nav_host_fragment_activity_main).popBackStack()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

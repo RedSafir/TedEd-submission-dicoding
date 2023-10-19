@@ -1,6 +1,8 @@
 package com.miftah.mysubmissionintermediate.feature.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,8 +34,10 @@ class HomeFragment : Fragment() {
             viewModel.removeToken()
             viewModel.removeSession()
         }
+        binding.actionChangeLang.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+        }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

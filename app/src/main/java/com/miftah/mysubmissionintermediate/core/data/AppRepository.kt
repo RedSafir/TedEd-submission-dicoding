@@ -5,6 +5,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.google.gson.Gson
 import com.miftah.mysubmissionintermediate.core.data.source.pref.UserPreference
 import com.miftah.mysubmissionintermediate.core.data.source.pref.model.UserModel
 import com.miftah.mysubmissionintermediate.core.data.source.remote.response.ListStoryItem
@@ -18,6 +19,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.HttpException
 
 class AppRepository(
     private val apiService: ApiService,
@@ -27,15 +29,14 @@ class AppRepository(
         emit(Result.Loading)
         try {
             val client = apiService.login(email, password)
-            if (!client.error) {
-                userPreference.saveSession(loginResultToModel(client.loginResult))
-                emit(Result.Success(client))
-            } else {
-                emit(Result.Error(client.message))
-            }
-        } catch (e: Exception) {
-            Log.d(TAG, "userLogin: ${e.message}")
-            emit(Result.Error(e.message.toString()))
+            userPreference.saveSession(loginResultToModel(client.loginResult))
+            emit(Result.Success(client))
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ResultResponse::class.java)
+            val errorMessage = errorBody.message
+            Log.d(TAG, "userLogin: $errorMessage")
+            emit(Result.Error(errorMessage))
         }
     }
 
@@ -53,10 +54,13 @@ class AppRepository(
         emit(Result.Loading)
         try {
             val client = apiService.register(name = name, email = email, password = password)
-            if (client.error) emit(Result.Error(client.message)) else emit(Result.Success(client))
-        } catch (e: Exception) {
-            Log.d(TAG, "userLogin: ${e.message}")
-            emit(Result.Error(e.message.toString()))
+            emit(Result.Success(client))
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ResultResponse::class.java)
+            val errorMessage = errorBody.message
+            Log.d(TAG, "userLogin: $errorMessage")
+            emit(Result.Error(errorMessage))
         }
     }
 
@@ -68,10 +72,13 @@ class AppRepository(
         emit(Result.Loading)
         try {
             val client = apiService.getStories("Bearer $token")
-            if (client.error) emit(Result.Error(client.message)) else emit(Result.Success(client.listStory))
-        } catch (e: Exception) {
-            Log.d(TAG, "userLogin: ${e.message}")
-            emit(Result.Error(e.message.toString()))
+            emit(Result.Success(client.listStory))
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ResultResponse::class.java)
+            val errorMessage = errorBody.message
+            Log.d(TAG, "userLogin: $errorMessage")
+            emit(Result.Error(errorMessage))
         }
     }
 
@@ -92,10 +99,13 @@ class AppRepository(
         )
         try {
             val client = apiService.stored("Bearer $token", multipartBody, requestBody)
-            if (client.error) emit(Result.Error(client.message)) else emit(Result.Success(client))
-        } catch (e: Exception) {
-            Log.d(TAG, "userLogin: ${e.message}")
-            emit(Result.Error(e.message.toString()))
+            emit(Result.Success(client))
+        } catch (e: HttpException) {
+            val jsonInString = e.response()?.errorBody()?.string()
+            val errorBody = Gson().fromJson(jsonInString, ResultResponse::class.java)
+            val errorMessage = errorBody.message
+            Log.d(TAG, "userLogin: $errorMessage")
+            emit(Result.Error(errorMessage))
         }
     }
 
