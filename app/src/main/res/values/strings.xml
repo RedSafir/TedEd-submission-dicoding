@@ -30,4 +30,6 @@
     <string name="titile_camera">Camera</string>
     <string name="title_gallery">Gallery</string>
     <string name="hint_description">Type description of Story</string>
+    <string name="retry">Try Again</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.miftah.mysubmissionintermediate.feature.main.data
+package com.miftah.mysubmissionintermediate.feature.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import com.miftah.mysubmissionintermediate.core.data.AppRepository
 import com.miftah.mysubmissionintermediate.core.data.source.pref.model.UserModel
 import kotlinx.coroutines.launch
 
-class MainActivityViewModel(private val repository: AppRepository) : ViewModel() {
+class MainViewModel(private val repository: AppRepository) : ViewModel() {
     private val _token = MutableLiveData<String>()
     val token: LiveData<String> = _token
 

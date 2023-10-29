@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.miftah.mysubmissionintermediate.core.data.AppRepository
 import com.miftah.mysubmissionintermediate.core.di.Injection
-import com.miftah.mysubmissionintermediate.feature.add.data.AddStoryViewModel
-import com.miftah.mysubmissionintermediate.feature.auth.data.WelcomeViewModel
-import com.miftah.mysubmissionintermediate.feature.main.data.MainActivityViewModel
+import com.miftah.mysubmissionintermediate.feature.add.AddStoryViewModel
+import com.miftah.mysubmissionintermediate.feature.auth.WelcomeViewModel
+import com.miftah.mysubmissionintermediate.feature.main.MainViewModel
 
 class ViewModelFactory private constructor(private val appRepository: AppRepository) :
     ViewModelProvider.NewInstanceFactory() {
@@ -18,8 +18,8 @@ class ViewModelFactory private constructor(private val appRepository: AppReposit
             modelClass.isAssignableFrom(WelcomeViewModel::class.java) -> {
                 WelcomeViewModel(appRepository) as T
             }
-            modelClass.isAssignableFrom(MainActivityViewModel::class.java) -> {
-                MainActivityViewModel(appRepository) as T
+            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
+                MainViewModel(appRepository) as T
             }
             modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
                 AddStoryViewModel(appRepository) as T

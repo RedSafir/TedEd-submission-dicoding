@@ -16,7 +16,6 @@ import com.miftah.mysubmissionintermediate.R
 import com.miftah.mysubmissionintermediate.core.data.Result
 import com.miftah.mysubmissionintermediate.core.ui.ViewModelFactory
 import com.miftah.mysubmissionintermediate.databinding.FragmentLoginBinding
-import com.miftah.mysubmissionintermediate.feature.auth.data.WelcomeViewModel
 import com.miftah.mysubmissionintermediate.feature.main.MainActivity
 
 class LoginFragment : Fragment(), TextWatcher {

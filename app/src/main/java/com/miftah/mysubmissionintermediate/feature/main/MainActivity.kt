@@ -13,12 +13,11 @@ import com.miftah.mysubmissionintermediate.R
 import com.miftah.mysubmissionintermediate.core.ui.ViewModelFactory
 import com.miftah.mysubmissionintermediate.databinding.ActivityMainBinding
 import com.miftah.mysubmissionintermediate.feature.auth.WelcomeActivity
-import com.miftah.mysubmissionintermediate.feature.main.data.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel by viewModels<MainActivityViewModel> {
+    private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(this)
     }
 
@@ -31,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             if (!it.isLogin) {
                 startActivity(Intent(this, WelcomeActivity::class.java))
                 finish()
-            }else {
+            } else {
                 viewModel.saveToken(it.token)
             }
         }

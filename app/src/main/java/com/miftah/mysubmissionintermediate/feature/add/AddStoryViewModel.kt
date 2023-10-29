@@ -1,4 +1,4 @@
-package com.miftah.mysubmissionintermediate.feature.add.data
+package com.miftah.mysubmissionintermediate.feature.add
 
 import android.content.Context
 import android.net.Uri

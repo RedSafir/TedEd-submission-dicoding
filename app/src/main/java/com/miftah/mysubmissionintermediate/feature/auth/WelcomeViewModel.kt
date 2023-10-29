@@ -1,4 +1,4 @@
-package com.miftah.mysubmissionintermediate.feature.auth.data
+package com.miftah.mysubmissionintermediate.feature.auth
 
 import androidx.lifecycle.ViewModel
 import com.miftah.mysubmissionintermediate.core.data.AppRepository

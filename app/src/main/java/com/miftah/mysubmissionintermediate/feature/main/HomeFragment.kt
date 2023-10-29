@@ -10,13 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.miftah.mysubmissionintermediate.core.ui.ViewModelFactory
 import com.miftah.mysubmissionintermediate.databinding.FragmentHomeBinding
-import com.miftah.mysubmissionintermediate.feature.main.data.MainActivityViewModel
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel : MainActivityViewModel by activityViewModels {
+    private val viewModel : MainViewModel by activityViewModels {
         ViewModelFactory.getInstance(requireContext())
     }
 

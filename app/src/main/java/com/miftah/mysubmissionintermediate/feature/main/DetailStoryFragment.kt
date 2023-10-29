@@ -5,19 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
-import com.miftah.mysubmissionintermediate.core.ui.ViewModelFactory
 import com.miftah.mysubmissionintermediate.databinding.FragmentDetailStoryBinding
-import com.miftah.mysubmissionintermediate.feature.main.data.MainActivityViewModel
 
 class DetailStoryFragment : Fragment() {
 
     private var _binding: FragmentDetailStoryBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainActivityViewModel by activityViewModels {
-        ViewModelFactory.getInstance(requireContext())
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

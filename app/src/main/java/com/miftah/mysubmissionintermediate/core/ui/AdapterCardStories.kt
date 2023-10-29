@@ -2,19 +2,19 @@ package com.miftah.mysubmissionintermediate.core.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.miftah.mysubmissionintermediate.core.data.source.remote.response.ListStoryItem
+import com.miftah.mysubmissionintermediate.core.data.source.local.entity.Stories
 import com.miftah.mysubmissionintermediate.databinding.CardStoryBinding
 
-class AdapterCardStories : ListAdapter<ListStoryItem, AdapterCardStories.ViewHolder>(DIFF_CALLBACK) {
+class AdapterCardStories : PagingDataAdapter<Stories, AdapterCardStories.ViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickCallback: OnClickListener
 
     inner class ViewHolder(val binding : CardStoryBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(listStoryItem: ListStoryItem) {
+        fun bind(listStoryItem: Stories) {
             Glide.with(binding.root)
                 .load(listStoryItem.photoUrl)
                 .into(binding.ivItemPhoto)
@@ -22,7 +22,7 @@ class AdapterCardStories : ListAdapter<ListStoryItem, AdapterCardStories.ViewHol
             binding.tvItemDesc.text = listStoryItem.description
         }
 
-        fun callCard(listStoryItem: ListStoryItem) {
+        fun callCard(listStoryItem: Stories) {
             onItemClickCallback.onClickCard(listStoryItem)
         }
     }
@@ -34,9 +34,11 @@ class AdapterCardStories : ListAdapter<ListStoryItem, AdapterCardStories.ViewHol
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val listStoryItem = getItem(position)
-        holder.bind(listStoryItem)
-        holder.itemView.setOnClickListener {
-            holder.callCard(listStoryItem)
+        listStoryItem?.let {
+            holder.bind(it)
+            holder.itemView.setOnClickListener {
+                holder.callCard(listStoryItem)
+            }
         }
     }
 
@@ -45,21 +47,21 @@ class AdapterCardStories : ListAdapter<ListStoryItem, AdapterCardStories.ViewHol
     }
 
     interface OnClickListener {
-        fun onClickCard(friendItem: ListStoryItem)
+        fun onClickCard(friendItem: Stories)
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Stories>() {
             override fun areItemsTheSame(
-                oldItem: ListStoryItem,
-                newItem: ListStoryItem
+                oldItem: Stories,
+                newItem: Stories
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: ListStoryItem,
-                newItem: ListStoryItem
+                oldItem: Stories,
+                newItem: Stories
             ): Boolean {
                 return oldItem == newItem
             }

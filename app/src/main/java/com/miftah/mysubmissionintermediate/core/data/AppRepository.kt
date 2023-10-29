@@ -5,10 +5,16 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.google.gson.Gson
+import com.miftah.mysubmissionintermediate.core.data.source.local.entity.Stories
+import com.miftah.mysubmissionintermediate.core.data.source.local.room.StoryDatabase
 import com.miftah.mysubmissionintermediate.core.data.source.pref.UserPreference
 import com.miftah.mysubmissionintermediate.core.data.source.pref.model.UserModel
-import com.miftah.mysubmissionintermediate.core.data.source.remote.response.ListStoryItem
 import com.miftah.mysubmissionintermediate.core.data.source.remote.response.LoginResponse
 import com.miftah.mysubmissionintermediate.core.data.source.remote.response.LoginResult
 import com.miftah.mysubmissionintermediate.core.data.source.remote.response.ResultResponse
@@ -23,7 +29,8 @@ import retrofit2.HttpException
 
 class AppRepository(
     private val apiService: ApiService,
-    private val userPreference: UserPreference
+    private val userPreference: UserPreference,
+    private val database : StoryDatabase
 ) {
     fun userLogin(email: String, password: String): LiveData<Result<LoginResponse>> = liveData {
         emit(Result.Loading)
@@ -68,18 +75,17 @@ class AppRepository(
 
     suspend fun removeSession() = userPreference.logout()
 
-    fun getAllStories(token: String): LiveData<Result<List<ListStoryItem>>> = liveData {
-        emit(Result.Loading)
-        try {
-            val client = apiService.getStories("Bearer $token")
-            emit(Result.Success(client.listStory))
-        } catch (e: HttpException) {
-            val jsonInString = e.response()?.errorBody()?.string()
-            val errorBody = Gson().fromJson(jsonInString, ResultResponse::class.java)
-            val errorMessage = errorBody.message
-            Log.d(TAG, "userLogin: $errorMessage")
-            emit(Result.Error(errorMessage))
-        }
+    fun getAllStories(token: String): LiveData<PagingData<Stories>> {
+        @OptIn(ExperimentalPagingApi::class)
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5
+            ),
+            remoteMediator = StoryRemoteMediator(database, apiService, token),
+            pagingSourceFactory = {
+                database.storiesDao().getAllStories()
+            }
+        ).liveData
     }
 
     fun storedStory(

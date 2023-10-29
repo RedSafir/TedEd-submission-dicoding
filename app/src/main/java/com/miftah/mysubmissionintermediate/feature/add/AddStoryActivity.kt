@@ -16,7 +16,6 @@ import com.miftah.mysubmissionintermediate.core.data.Result
 import com.miftah.mysubmissionintermediate.core.ui.ViewModelFactory
 import com.miftah.mysubmissionintermediate.core.utils.getImageUri
 import com.miftah.mysubmissionintermediate.databinding.ActivityAddStoryBinding
-import com.miftah.mysubmissionintermediate.feature.add.data.AddStoryViewModel
 
 class AddStoryActivity : AppCompatActivity(){
 

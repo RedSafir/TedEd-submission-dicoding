@@ -30,4 +30,5 @@
     <string name="titile_camera">Kamera</string>
     <string name="title_gallery">Album</string>
     <string name="hint_description">Tulis Deskripsi untuk cerita</string>
+    <string name="retry">Coba Lagi</string>
 </resources>

@@ -15,7 +15,6 @@ import androidx.navigation.fragment.findNavController
 import com.miftah.mysubmissionintermediate.core.data.Result
 import com.miftah.mysubmissionintermediate.core.ui.ViewModelFactory
 import com.miftah.mysubmissionintermediate.databinding.FragmentSignupBinding
-import com.miftah.mysubmissionintermediate.feature.auth.data.WelcomeViewModel
 
 class SignupFragment : Fragment(), TextWatcher {
 
@@ -39,9 +38,11 @@ class SignupFragment : Fragment(), TextWatcher {
         check()
         playAnimation()
 
-        binding.edLoginEmail.addTextChangedListener(this)
-        binding.edLoginPassword.addTextChangedListener(this)
-        binding.edRegisterName.addTextChangedListener(this)
+        binding.apply {
+            edLoginEmail.addTextChangedListener(this@SignupFragment)
+            edLoginPassword.addTextChangedListener(this@SignupFragment)
+            edLoginPassword.addTextChangedListener(this@SignupFragment)
+        }
 
         binding.btnSignup.setOnClickListener {
             val username = binding.edRegisterName.text.toString()
