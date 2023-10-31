@@ -2,6 +2,7 @@ package com.miftah.mysubmissionintermediate.feature.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import com.miftah.mysubmissionintermediate.R
 import com.miftah.mysubmissionintermediate.core.ui.ViewModelFactory
 import com.miftah.mysubmissionintermediate.databinding.ActivityMainBinding
 import com.miftah.mysubmissionintermediate.feature.auth.WelcomeActivity
+import com.miftah.mysubmissionintermediate.feature.gmaps.MapsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,8 +32,6 @@ class MainActivity : AppCompatActivity() {
             if (!it.isLogin) {
                 startActivity(Intent(this, WelcomeActivity::class.java))
                 finish()
-            } else {
-                viewModel.saveToken(it.token)
             }
         }
         setupBottomNav()
@@ -46,10 +46,24 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setupWithNavController(navController)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.appbar_nav_menu, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            findNavController(R.id.nav_host_fragment_activity_main).popBackStack()
+        return when(item.itemId) {
+            R.id.navigation_gmaps -> {
+                val intent = Intent(this, MapsActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            android.R.id.home -> {
+                findNavController(R.id.nav_host_fragment_activity_main).popBackStack()
+                true
+            }
+
+            else -> {false}
         }
-        return super.onOptionsItemSelected(item)
     }
 }

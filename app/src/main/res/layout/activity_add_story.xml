@@ -32,9 +32,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/title_gallery"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/button_to_camera"
-        app:layout_constraintTop_toBottomOf="@id/guideline" />
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_constraintEnd_toStartOf="@id/switch_location"/>
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switch_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Location"
+        tools:checked="true"
+        android:enabled="false"
+        app:layout_constraintStart_toEndOf="@id/button_to_gallery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline"/>
+
 
     <EditText
         android:id="@+id/ed_add_description"

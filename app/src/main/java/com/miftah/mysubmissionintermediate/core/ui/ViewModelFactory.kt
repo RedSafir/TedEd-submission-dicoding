@@ -7,6 +7,7 @@ import com.miftah.mysubmissionintermediate.core.data.AppRepository
 import com.miftah.mysubmissionintermediate.core.di.Injection
 import com.miftah.mysubmissionintermediate.feature.add.AddStoryViewModel
 import com.miftah.mysubmissionintermediate.feature.auth.WelcomeViewModel
+import com.miftah.mysubmissionintermediate.feature.gmaps.MapsVieModel
 import com.miftah.mysubmissionintermediate.feature.main.MainViewModel
 
 class ViewModelFactory private constructor(private val appRepository: AppRepository) :
@@ -24,23 +25,24 @@ class ViewModelFactory private constructor(private val appRepository: AppReposit
             modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
                 AddStoryViewModel(appRepository) as T
             }
+            modelClass.isAssignableFrom(MapsVieModel::class.java) -> {
+                MapsVieModel(appRepository) as T
+            }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
-
 
     companion object {
         @Volatile
         private var instance: ViewModelFactory? = null
 
+        @JvmStatic
         fun getInstance(context: Context): ViewModelFactory =
-            instance
-                ?: synchronized(this) {
-                    instance
-                        ?: ViewModelFactory(
-                            Injection.provideRepository(
-                                context
-                            )
-                        )
-                }
+            instance ?: synchronized(this) {
+                    instance ?: ViewModelFactory(Injection.provideRepository(context))
+                }.also { instance = it }
+
+        fun removeInstance() {
+            instance = null
+        }
     }
 }

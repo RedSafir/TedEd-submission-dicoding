@@ -11,7 +11,6 @@ private const val MAXIMAL_SIZE = 1000000
 fun File.reduceFileImage(): File {
     val file = this
     val bitmap = BitmapFactory.decodeFile(file.path).getRotatedBitmap(file)
-    // methode perulangan
     var compressQuality = 100
     var streamLength: Int
     do {

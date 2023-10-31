@@ -24,11 +24,7 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_navigation_listStory_to_addStoryActivity"
-            app:destination="@id/addStoryActivity"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:destination="@id/addStoryActivity" />
     </fragment>
     <fragment
         android:id="@+id/detailStoryFragment"
@@ -52,11 +48,6 @@
         android:id="@+id/addStoryActivity"
         android:name="com.miftah.mysubmissionintermediate.feature.add.AddStoryActivity"
         android:label="activity_add_story"
-        tools:layout="@layout/activity_add_story" >
-        <argument
-            android:name="token"
-            app:argType="string"
-            android:defaultValue='" "' />
-    </activity>
+        tools:layout="@layout/activity_add_story" />
 
 </navigation>

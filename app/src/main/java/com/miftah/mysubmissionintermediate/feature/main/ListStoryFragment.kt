@@ -37,17 +37,14 @@ class ListStoryFragment : Fragment() {
 
         setupRV()
 
-        viewModel.token.observe(viewLifecycleOwner) { token ->
-            viewModel.getAllStories(token).observe(viewLifecycleOwner) {
-                adapter.submitData(lifecycle, it)
-            }
+        viewModel.getAllStories().observe(viewLifecycleOwner) {
+            adapter.submitData(lifecycle, it)
+        }
 
-            binding.fabAdd.setOnClickListener {
-                val toAddStoryActivity =
-                    ListStoryFragmentDirections.actionNavigationListStoryToAddStoryActivity()
-                toAddStoryActivity.token = token
-                findNavController().navigate(toAddStoryActivity)
-            }
+        binding.fabAdd.setOnClickListener {
+            val toAddStoryActivity =
+                ListStoryFragmentDirections.actionNavigationListStoryToAddStoryActivity()
+            findNavController().navigate(toAddStoryActivity)
         }
     }
 
@@ -73,6 +70,11 @@ class ListStoryFragment : Fragment() {
                 findNavController().navigate(toDetailStoryFragment)
             }
         })
+    }
+
+    override fun onStart() {
+        adapter.refresh()
+        super.onStart()
     }
 
 

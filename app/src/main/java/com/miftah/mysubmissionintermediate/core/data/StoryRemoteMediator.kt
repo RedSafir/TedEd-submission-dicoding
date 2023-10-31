@@ -1,5 +1,6 @@
 package com.miftah.mysubmissionintermediate.core.data
 
+import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -15,8 +16,7 @@ import retrofit2.HttpException
 @OptIn(ExperimentalPagingApi::class)
 class StoryRemoteMediator(
     private val database: StoryDatabase,
-    private val apiService: ApiService,
-    private val token: String
+    private val apiService: ApiService
 ) : RemoteMediator<Int, Stories>() {
 
     override suspend fun initialize(): InitializeAction {
@@ -30,6 +30,7 @@ class StoryRemoteMediator(
         val page = when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
+                Log.d(TAG, "load: onReffresh")
                 remoteKeys?.nextKey?.minus(1) ?: INITIAL_PAGE_INDEX
             }
 
@@ -50,7 +51,7 @@ class StoryRemoteMediator(
 
         try {
             val responseData =
-                apiService.getStories("Bearer $token", page, state.config.pageSize).listStory
+                apiService.getStories(page, state.config.pageSize).listStory
 
             val endOfPaginationReached = responseData.isEmpty()
 
@@ -97,5 +98,6 @@ class StoryRemoteMediator(
 
     private companion object {
         const val INITIAL_PAGE_INDEX = 1
+        const val TAG = "StoryMediator"
     }
 }

@@ -8,7 +8,8 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.miftah.mysubmissionintermediate.databinding.ItemLoadingBinding
 
-class LoadingStateAdapter(private val retry: () -> Unit) : LoadStateAdapter<LoadingStateAdapter.LoadingStateViewHolder>() {
+class LoadingStateAdapter(private val retry: () -> Unit) :
+    LoadStateAdapter<LoadingStateAdapter.LoadingStateViewHolder>() {
 
     class LoadingStateViewHolder(private val binding: ItemLoadingBinding, retry: () -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
@@ -24,7 +25,7 @@ class LoadingStateAdapter(private val retry: () -> Unit) : LoadStateAdapter<Load
             binding.retryButton.isVisible = loadState is LoadState.Error
             binding.errorMsg.isVisible = loadState is LoadState.Error
         }
-        }
+    }
 
     override fun onBindViewHolder(holder: LoadingStateViewHolder, loadState: LoadState) {
         holder.bind(loadState)

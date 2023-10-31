@@ -64,6 +64,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:18.0.0")
     ksp("androidx.room:room-compiler:2.5.2")
     implementation("androidx.paging:paging-runtime:3.1.1")
     implementation("androidx.room:room-paging:2.4.2")

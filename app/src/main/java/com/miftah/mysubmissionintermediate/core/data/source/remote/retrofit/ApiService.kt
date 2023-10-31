@@ -8,7 +8,6 @@ import okhttp3.RequestBody
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
@@ -33,17 +32,28 @@ interface ApiService {
 
     @GET("stories")
     suspend fun getStories(
-        @Header("Authorization") token: String,
         @Query("page") page: Int,
-        @Query("size") size: Int,
+        @Query("size") size: Int
+    ): StoriesResponse
+
+    @GET("stories")
+    suspend fun getStoriesWithMap(
         @Query("location") location: Int = 1
     ): StoriesResponse
 
     @Multipart
     @POST("stories")
     suspend fun stored(
-        @Header("Authorization") token: String,
         @Part file: MultipartBody.Part,
         @Part("description") description: RequestBody,
+    ): ResultResponse
+
+    @Multipart
+    @POST("stories")
+    suspend fun storedWithLocation(
+        @Part file: MultipartBody.Part,
+        @Part("description") description: RequestBody,
+        @Part("lat") lat: Float,
+        @Part("lon") lon: Float
     ): ResultResponse
 }
