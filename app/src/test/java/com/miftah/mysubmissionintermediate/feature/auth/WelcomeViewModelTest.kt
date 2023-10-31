@@ -6,7 +6,6 @@ import com.miftah.mysubmissionintermediate.core.data.AppRepository
 import com.miftah.mysubmissionintermediate.core.data.Result
 import com.miftah.mysubmissionintermediate.core.data.source.remote.response.LoginResponse
 import com.miftah.mysubmissionintermediate.core.data.source.remote.response.ResultResponse
-import com.miftah.mysubmissionintermediate.utils.MainDispatcherRule
 import com.miftah.mysubmissionintermediate.utils.dataDummy.RemoteResponseDummy
 import com.miftah.mysubmissionintermediate.utils.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -26,9 +25,6 @@ class WelcomeViewModelTest {
 
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
-
-    @get:Rule
-    val mainDispatcherRules = MainDispatcherRule()
 
     @Mock
     private lateinit var repository: AppRepository

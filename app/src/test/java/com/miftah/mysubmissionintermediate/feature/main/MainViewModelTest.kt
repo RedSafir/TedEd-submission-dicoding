@@ -90,7 +90,7 @@ class MainViewModelTest {
     }
 
     @Test
-    fun `when Get Session Should Get Data`() = runTest {
+    fun `when Get Session Should Get Data`() {
         val sampleUser = flowOf(PreffUserDummy.generateUser(true))
 
         `when`(repository.getSession()).thenReturn(sampleUser)
