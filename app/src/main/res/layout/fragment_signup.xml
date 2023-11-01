@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.auth.SignupFragment">
+    tools:context=".feature.auth.SignupFragment"
+    android:id="@+id/signup_fragment">
 
     <ImageView
         android:id="@+id/title_img_tedd"
@@ -60,7 +61,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameEditTextLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -92,7 +92,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailEditTextLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -104,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_title_email">
 
         <com.miftah.mysubmissionintermediate.core.ui.view.EmailEditText
-            android:id="@+id/ed_login_email"
+            android:id="@+id/ed_register_email"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:alpha="0"
@@ -126,7 +125,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordEditTextLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -138,7 +136,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_title_password">
 
     <com.miftah.mysubmissionintermediate.core.ui.view.PasswordEditText
-        android:id="@+id/ed_login_password"
+        android:id="@+id/ed_register_password"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="start"
@@ -149,7 +147,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.miftah.mysubmissionintermediate.core.ui.view.MyButton
-        android:id="@+id/btn_signup"
+        android:id="@+id/btn_register_signup"
         android:layout_width="0dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"

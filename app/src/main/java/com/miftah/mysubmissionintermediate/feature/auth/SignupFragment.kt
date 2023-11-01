@@ -27,7 +27,7 @@ class SignupFragment : Fragment(), TextWatcher {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSignupBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -39,15 +39,15 @@ class SignupFragment : Fragment(), TextWatcher {
         playAnimation()
 
         binding.apply {
-            edLoginEmail.addTextChangedListener(this@SignupFragment)
-            edLoginPassword.addTextChangedListener(this@SignupFragment)
-            edLoginPassword.addTextChangedListener(this@SignupFragment)
+            edRegisterEmail.addTextChangedListener(this@SignupFragment)
+            edRegisterName.addTextChangedListener(this@SignupFragment)
+            edRegisterPassword.addTextChangedListener(this@SignupFragment)
         }
 
-        binding.btnSignup.setOnClickListener {
+        binding.btnRegisterSignup.setOnClickListener {
             val username = binding.edRegisterName.text.toString()
-            val email = binding.edLoginEmail.text.toString()
-            val password = binding.edLoginPassword.text.toString()
+            val email = binding.edRegisterEmail.text.toString()
+            val password = binding.edRegisterPassword.text.toString()
             viewModel.userRegis(email, username, password).observe(viewLifecycleOwner) {
                 when (it) {
                     is Result.Loading -> binding.progressBar.visibility = View.VISIBLE
@@ -71,12 +71,12 @@ class SignupFragment : Fragment(), TextWatcher {
     }
 
     private fun check() {
-        val edEmail = binding.edLoginEmail.text.toString()
-        val edPass = binding.edLoginPassword.text.toString()
+        val edEmail = binding.edRegisterEmail.text.toString()
+        val edPass = binding.edRegisterPassword.text.toString()
         val edName = binding.edRegisterName.text.toString()
         val check = (edEmail.isNotEmpty() && edPass.isNotEmpty() && edName.isNotEmpty())
-        binding.btnSignup.isActivated = check
-        binding.btnSignup.isEnabled = check
+        binding.btnRegisterSignup.isActivated = check
+        binding.btnRegisterSignup.isEnabled = check
     }
 
     override fun onDestroy() {
@@ -111,14 +111,14 @@ class SignupFragment : Fragment(), TextWatcher {
         val edLayoutMail =
             ObjectAnimator.ofFloat(binding.emailEditTextLayout, View.ALPHA, 1F).setDuration(500)
         val edTextMail =
-            ObjectAnimator.ofFloat(binding.edLoginEmail, View.ALPHA, 1F).setDuration(500)
+            ObjectAnimator.ofFloat(binding.edRegisterEmail, View.ALPHA, 1F).setDuration(500)
         val titlePass =
             ObjectAnimator.ofFloat(binding.tvTitlePassword, View.ALPHA, 1F).setDuration(500)
         val edLayoutPass =
             ObjectAnimator.ofFloat(binding.passwordEditTextLayout, View.ALPHA, 1F).setDuration(500)
         val edTextPass =
-            ObjectAnimator.ofFloat(binding.edLoginPassword, View.ALPHA, 1F).setDuration(500)
-        val btnSignup = ObjectAnimator.ofFloat(binding.btnSignup, View.ALPHA, 1F).setDuration(500)
+            ObjectAnimator.ofFloat(binding.edRegisterPassword, View.ALPHA, 1F).setDuration(500)
+        val btnSignup = ObjectAnimator.ofFloat(binding.btnRegisterSignup, View.ALPHA, 1F).setDuration(500)
 
         val header = AnimatorSet().apply {
             playTogether(titleImg, titleSignUp, imageSignUp)

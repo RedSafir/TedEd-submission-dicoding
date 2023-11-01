@@ -20,7 +20,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -41,7 +40,9 @@ android {
         viewBinding = true
         buildConfig = true
     }
-
+    testOptions {
+        animationsDisabled = true
+    }
 }
 
 dependencies {
@@ -84,6 +85,9 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
     testImplementation("org.robolectric:robolectric:3.4.2")
+    debugImplementation("androidx.fragment:fragment-testing:1.6.1")
+    androidTestImplementation("androidx.navigation:navigation-testing:2.5.3")
+    implementation("androidx.test.espresso:espresso-idling-resource:3.4.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

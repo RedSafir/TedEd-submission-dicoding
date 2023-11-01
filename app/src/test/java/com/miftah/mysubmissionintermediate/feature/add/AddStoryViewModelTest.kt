@@ -36,7 +36,7 @@ class AddStoryViewModelTest {
     }
 
 /*    fun `When Stored Story without Location, Return Success`() {
-        dummyUri = StoryDummy.imageUriBase64Dummy.base64ToUri(mockContext) as Uri
+        dummyUri = Uri.parse(StoryDummy.imageUriBase64Dummy)
         dummyDescription = StoryDummy.descriptionDummy
         val dummyData = RemoteResponseDummy.generateStoriesResponseResult(false, "success")
         val expectedResult = MutableLiveData<Result<ResultResponse>>()
